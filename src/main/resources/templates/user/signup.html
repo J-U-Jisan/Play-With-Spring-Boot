@@ -13,40 +13,45 @@
     <title th:text="#{user.signup.title}"></title>
 </head>
 <body class="bg-light">
-    <form id="signup-form" method="post" action="/user/signup" class="form-signup">
+    <form id="signup-form" method="post" action="/user/signup" class="form-signup" th:object="${signupForm}">
         <h1 class ="text-center" th:text="#{user.signup.title}"></h1>
         <!-- User ID -->
         <div class ="form-group" >
             <label for ="userId" th:text="#{userId}" ></label>
-            <input type ="text" class ="form-control" id="userId" />
+            <input type ="text" class ="form-control" th:field="*{userId}" th:errorclass="is-invalid"/>
+            <div class="invalid-feedback" th:errors="*{userId}"></div>
         </div>
         <!-- Password -->
         <div class ="form-group" >
             <label for ="password" th:text="#{password}"></label>
-            <input type ="text" class ="form-control" id="password" />
+            <input type ="text" class ="form-control" th:field="*{password}" th:errorclass="is-invalid"/>
+            <div class="invalid-feedback" th:errors="*{password}"></div>
         </div>
         <!-- User Name -->
         <div class ="form-group" >
             <label for ="userName" th:text="#{userName}"></label>
-            <input type ="text" class ="form-control" id="userName" />
+            <input type ="text" class ="form-control" th:field="*{userName}" th:errorclass="is-invalid"/>
+            <div class="invalid-feedback" th:errors="*{userName}"></div>
         </div>
         <!-- Birthday -->
         <div class ="form-group" >
             <label for ="birthday" th:text="#{birthday}"></label>
-            <input type ="text" class ="form-control" id="birthday" />
+            <input type ="text" class ="form-control" placeholder="dd/MM/yyyy" th:field="*{birthday}" th:errorclass="is-invalid"/>
+            <div class="invalid-feedback" th:errors="*{birthday}"></div>
         </div>
         <!-- Age -->
         <div class ="form-group" >
             <label for ="age" th:text="#{age}"></label>
-            <input type ="text" class ="form-control" id="age" />
+            <input type ="text" class ="form-control" th:field="*{age}" th:errorclass="is-invalid" />
+            <div class="invalid-feedback" th:errors="*{age}"></div>
         </div>
         <!-- Gender -->
         <div class ="form-group" >
             <div th:each ="item : ${genderMap}" class ="form-check-inline" >
-                <input type ="radio" class ="form-check-input" th:value ="${item.value}" />
-                <label class ="form-check-label" th:text ="${item.key}" ></label
-                >
+                <input type ="radio" class ="form-check-input" th:value ="${item.value}" th:field="*{gender}" th:errorclass="is-invalid" />
+                <label class ="form-check-label" th:text ="${item.key}" ></label>
             </div>
+            <div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
         </div>
         <!-- Signup button -->
         <input type ="submit" th:value ="#{user.signup.btn}"
