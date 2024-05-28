@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS m_user (
     gender INT,
     department_id INT,
     role VARCHAR (50)
-)
+);
 
 /* Department master */
 CREATE TABLE IF NOT EXISTS m_department(

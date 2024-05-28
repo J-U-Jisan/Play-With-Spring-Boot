@@ -28,4 +28,23 @@
             #{role}
         )
     </insert>
+
+    <!-- Get users -->
+    <select id="findMany" resultType="MUser">
+        select
+            *
+        from
+            m_user
+    </select>
+
+    <!-- Get user -->
+    <select id="findOne" resultType="MUser">
+        select
+            *
+        from
+            m_user
+        where
+            user_id = #{userId}
+    </select>
+
 </mapper>

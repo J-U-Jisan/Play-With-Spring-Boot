@@ -6,6 +6,8 @@ import com.example.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -18,5 +20,15 @@ public class UserServiceImpl implements UserService {
         user.setDepartmentId(1);
         user.setRole("ROLE_GENERAL");
         mapper.insertOne(user);
+    }
+
+    @Override
+    public List<MUser> getUsers() {
+        return mapper.findMany();
+    }
+
+    @Override
+    public MUser getUserOne(String userId) {
+        return mapper.findOne(userId);
     }
 }
