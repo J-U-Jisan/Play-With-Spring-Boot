@@ -32,7 +32,7 @@ public class UserDetailController {
 
         // Get user
         form = modelMapper.map(user, UserDetailForm.class);
-
+        form.setSalaryList(user.getSalaryList());
         // Registered in Model
         model.addAttribute("userDetailForm", form);
 
