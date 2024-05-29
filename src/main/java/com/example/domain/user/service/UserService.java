@@ -14,4 +14,10 @@ public interface UserService {
 
     /** Get user */
     public MUser getUserOne(String userId);
+
+    /** Update user */
+    public void updateUserOne(String userId, String password, String userName);
+
+    /** Delete user */
+    public void deleteUserOne(String userId);
 }
