@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.service.UserService;
 import com.example.form.UserDetailForm;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class UserDetailController {
 
     @Autowired
@@ -43,8 +45,12 @@ public class UserDetailController {
     /** User update process */
     @PostMapping(value ="/detail", params = "update")
     public String updateUser(UserDetailForm form, Model model) {
-        // Update user
-        userService.updateUserOne(form.getUserId(), form.getPassword(), form.getUserName());
+        try {
+            // Update user
+            userService.updateUserOne(form.getUserId(), form.getPassword(), form.getUserName());
+        } catch (Exception e) {
+            log.error("Error in user update", e);
+        }
 
         // Redirect to user list screen
         return "redirect:/user/list";
