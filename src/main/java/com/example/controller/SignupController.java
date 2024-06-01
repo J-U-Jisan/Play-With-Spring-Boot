@@ -8,14 +8,13 @@ import com.example.form.SignupForm;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Locale;
 import java.util.Map;
@@ -65,5 +64,35 @@ public class SignupController {
 
         // Redirect to login screen
         return "redirect:/login";
+    }
+
+    /** Database-related exception handling */
+    @ExceptionHandler (DataAccessException.class)
+    public String dataAccessExceptionHandler (DataAccessException e, Model model) {
+        // Set an empty string
+        model.addAttribute("error", "");
+
+        // Register message in Model
+        model.addAttribute("message", "An exception occurred in SignupController");
+
+        // Register HTTP error code(500) in Model
+        model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return "error";
+    }
+
+    /** Other exception handling */
+    @ExceptionHandler (Exception.class)
+    public String exceptionHandler (Exception e, Model model) {
+        // Set an empty string
+        model.addAttribute("error", "");
+
+        // Register message in Model
+        model.addAttribute("message", "An exception occurred in SignupController");
+
+        // Register HTTP error code(500) in Model
+        model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return "error";
     }
 }
