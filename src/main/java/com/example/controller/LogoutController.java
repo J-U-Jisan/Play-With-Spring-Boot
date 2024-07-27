@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LogoutController {
 
     /** Redirect to login screen */
-    @PostMapping ("/logout")
-    public String postLogout() {
-        log.info("Logout");
-        return "redirect:/login";
-    }
+//    @PostMapping ("/logout")
+//    public String postLogout() {
+//        log.info("Logout");
+//        return "redirect:/login";
+//    }
 }
