@@ -2,6 +2,7 @@ package com.example.domain.user.service.impl;
 
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -34,7 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         GrantedAuthority authority = new SimpleGrantedAuthority(loginUser.getRole());
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(authority);
-
         // Generate UserDetails
 
         return new User(loginUser.getUserId(), loginUser.getPassword(), authorities);

@@ -6,6 +6,10 @@
     <title> User List</title>
     <!-- Read Dedicated CSS -->
     <link rel ="stylesheet" th:href ="@{/css/user/list.css}" >
+    <link rel ="stylesheet" th:href ="@{/webjars/datatables/css/dataTables.jqueryui.min.css}" >
+    <!-- Read JS -->
+    <script th:src ="@{/webjars/datatables/js/dataTables.min.js}" defer ></script>
+    <script th:src ="@{/js/user/list.js}" defer ></script>
 </head>
 <body>
 <div layout:fragment ="content" >
@@ -29,6 +33,9 @@
             <div class="col-auto">
                 <button class ="btn btn-primary" style="margin-top: 20px;" type ="submit" >
                     search
+                </button>
+                <button id ="btn-search" class ="btn btn-primary ml-3" style="margin-top: 20px;" type ="button" >
+                    search(REST)
                 </button>
             </div>
         </form>
@@ -58,6 +65,24 @@
                 </td>
             </tr>
             </tbody>
+        </table>
+    </div>
+    <!-- List display (REST) -->
+    <div>
+        <table id="user-list-table"
+            class="table table-striped table-bordered table-hover w-100"
+        >
+            <thead class="thead-light">
+            <tr>
+                <th class ="th-width" > User ID</th>
+                <th class ="th-width" > User Name</th>
+                <th class ="th-width" > Birthday</th>
+                <th class ="th-width" > Age</th>
+                <th class ="th-width" > Gender</th>
+                <th class ="th-width" ></th>
+            </tr>
+            </thead>
+            <tbody></tbody>
         </table>
     </div>
 </div>

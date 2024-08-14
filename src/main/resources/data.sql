@@ -12,8 +12,8 @@ INSERT INTO m_user (
     department_id,
     role
 ) VALUES
-      ('system@co.jp', 'password', 'System Administrator', '2000-01-01', 21, 1, 1, 'ROLE_ADMIN'),
-      ('user@co.jp' , 'password' , 'User1' , '2000-01-01' , 21, 2, 2, 'ROLE_GENERAL' );
+      ('system@co.jp', '', 'System Administrator', '2000-01-01', 21, 1, 1, 'ROLE_ADMIN'),
+      ('user@co.jp' , '' , 'User1' , '2000-01-01' , 21, 2, 2, 'ROLE_GENERAL' );
 
 /* Department master */
 INSERT INTO m_department (
