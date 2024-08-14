@@ -29,6 +29,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.1.2.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.3.2'
 
 	implementation 'org.webjars:bootstrap:5.3.3'
 	implementation 'org.webjars:jquery:3.7.1'
